@@ -1,2 +1,46 @@
 # lxsshost
-Code related to using LX subsystems (Bash on Windows)
+    Configures a Windows local host to allow multiple LX subsystems to be more easily accessible by a 
+    single user.
+    
+# Desciption
+    This enables multiple LX subsystems (LXSS) to be more easily accessible by a single user. Each user 
+    account can host a unique LX subsystem. Multiple LX subsystems can already exist by creating separate 
+    local user account for each LX subsystem.
+    
+# Getting started
+    Download master.ps1 and run the following in an elevated PowerShell console:
+       Import-Module C:\path\to\master.ps1 -Global
+    
+    (Optional)
+    Run the following function to create the local group and create the configuration files:
+       Initialize-LXSSHost -Verbose
+    
+# Creating a new LX subsystem
+    Run the following function to create a new LX subsystem:
+       New-LXSubsystem
+    
+    Details on what this is doing:
+    Each local user account is created with the same password and standardize naming convention. Using the 
+    same password and standardized account name syntax, credentials are then stored and passed within 
+    subsequent functions to run the bash.exe as the separate user.
+    
+    It also hides each account from the Windows logon screen and enables the ability to re-direct the
+    the LXSS account profiles. I can confirm I am currently redirecting these account profiles
+    to a separate drive.
+    
+  ! WARNING: Because it made it easier for me, I automatically also add every LXSS user
+    to the Administrators group. Might be a security concern for some, but all my testing
+    has always had the LXSS accounts users in this group. 
+   
+# INPUTS
+    The host setup involves creating json files that I hope to eventually take as the 
+    default input values for subsequent functions.
+    
+# NOTES
+    General notes:
+      Built and tested with the LXSS accounts all members of the Administrators group on
+      a non-domain joined computer.
+             Author: Victor Pham
+    DateLastUpdated: 2017-06-18
+            Version:
+             0.0.1.0 - Created.
