@@ -12,19 +12,27 @@
     
 # Getting started
     Download master.ps1 and run the following in an elevated PowerShell console:
-       Import-Module C:\path\to\master.ps1 -Global
+```powershell
+Import-Module C:\path\to\master.ps1 -Global
+```
     
     (Optional)
     Run the following function to create the local group and create the configuration files:
-       Initialize-LXSSHost -Verbose
+```powershell
+Initialize-LXSSHost -Verbose
+```
+    This is not required to use the New-LXSubsystem function but future code may be written assuming this
+    has been ran and there does exist some group by which to filter LXSS user accounts.
     
 # Creating a new LX subsystem
     Run the following function to create a new LX subsystem:
-        New-LXSubsystem
+```powershell
+New-LXSubsystem
+```
     
-Details on what this is doing:
+## Details on what this is doing:
     
-    Each local user account is created with the same password and standardize naming convention. Using the 
+    Each local LXSS user account is created with the same password and standardize naming convention. Using the 
     same password and standardized account name syntax, credentials are then stored and passed within 
     subsequent functions to run the bash.exe as the separate user.
     
@@ -40,18 +48,27 @@ Details on what this is doing:
     The following function invokes bash.exe under the context of the user account specified in -Name.
     Just to be fancy, the -Name parameter options is defined at runtime and will update, based on account 
     membership of Linux Subsystems group.
-        Enter-BashSession
+```powershell
+Enter-BashSession
+```
         
-    If need-be, the following function will open up Windows cmd prompt as the LX subsystem account:
-        Start-LXSubsystemCommand
+    If need-be, the following function will open up Windows cmd prompt as the LX subsystem account to enter
+    in credentials if not stored:
+```powershell
+Start-LXSubsystemCommand
+```
    
 # Caveats
     The host setup involves creating json files that I hope to eventually take as the 
-    default input values for subsequent functions. I hope to slim down a user profile could be used 
-    as the default user profile template just the LXSS accounts.
+    default input values for subsequent functions. I hope to create a separate default user profile to be used for
+    the LXSS user accounts. I was thinking maybe to use a shared user profile directory with a separately defined 
+    location only the user AppData folder where the LX subsystem exists.
+    
+    Anyway, please enjoy and please feel free to share, contribute, or report bugs found.
     
 # Author
-    Victor Pham, victorvpham@gmail.com
+    Victor Pham
+    victorvpham@gmail.com
     Last updated 2017-06-18
     
 # Version:
