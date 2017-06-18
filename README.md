@@ -31,16 +31,16 @@ Initialize-LXSSHost -Verbose
 New-LXSubsystem -Name ubuntu -LXSSRoot "C:\.lxss" -Password "Change2day!" -AsPlainText -SetLXSSPassword
 ```
 ##### Note
-    This is not required to use the New-LXSubsystem function but future code may be written assuming this 
-    has been ran and there does exist some group by which to filter LXSS user accounts.
+    Subsequent new LX subsystems can be created with -Password (and everything after) omitted which will set
+    the user password to the same password set with the -SetLXSSPassword parameter.
     
 ### Details on what this is doing:
     
-    + A user account is created, -SetLXSSPassword exports the credentials to a text file (converted from a secure 
+    - A user account is created, -SetLXSSPassword exports the credentials to a text file (converted from a secure 
     string).
-    + Invokes Windows command prompt (and exits) to create the user profile in the directory specified by LXSSRoot.
-        I can confirm this can allow you to redirect the LX subsystem to a drive other than the system drive.
-    + The user account is set to be hidden from the Windows logon screen
+    - Invokes Windows command prompt (and exits) to create the user profile in the directory specified by LXSSRoot.
+      * This can allow you to redirect the LX subsystem to a drive other than the system drive.
+    - The user account is set to be hidden from the Windows logon screen
     
 ##### Warning
     I also add every LXSS user to the Administrators group. Might be a security concern for some but 
@@ -68,9 +68,9 @@ Start-LXSubsystemCommand -Name ubuntu
   Please enjoy and feel free to share, contribute, or report bugs found.
     
 ## Author
-    Victor Pham
-    victorvpham@gmail.com
-    Last updated 2017-06-18
+  Victor Pham
+  victorvpham@gmail.com
+  Last updated 2017-06-18
     
 #### Version:
     0.0.1.0 - Created.
