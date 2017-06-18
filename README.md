@@ -17,9 +17,10 @@
     
 # Creating a new LX subsystem
     Run the following function to create a new LX subsystem:
-       New-LXSubsystem
+        New-LXSubsystem
     
-    Details on what this is doing:
+Details on what this is doing:
+    
     Each local user account is created with the same password and standardize naming convention. Using the 
     same password and standardized account name syntax, credentials are then stored and passed within 
     subsequent functions to run the bash.exe as the separate user.
@@ -32,15 +33,13 @@
     to the Administrators group. Might be a security concern for some, but all my testing
     has always had the LXSS accounts users in this group. 
    
-# INPUTS
+# Caveats
     The host setup involves creating json files that I hope to eventually take as the 
     default input values for subsequent functions.
     
-# NOTES
-    General notes:
-      Built and tested with the LXSS accounts all members of the Administrators group on
-      a non-domain joined computer.
-             Author: Victor Pham
-    DateLastUpdated: 2017-06-18
-            Version:
-             0.0.1.0 - Created.
+# Author
+    Authored by Victor Pham, victorvpham@gmail.com
+    Last updated 2017-06-18
+    
+# Version:
+    0.0.1.0 - Created.
