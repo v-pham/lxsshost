@@ -2,12 +2,12 @@
     Configures a Windows local host to allow multiple LX subsystems to be more easily accessible by a 
     single user.
     
-# Desciption
+# Description
     This enables multiple LX subsystems (LXSS) to be more easily accessible by a single user. Each user 
     account can host a unique LX subsystem. Multiple LX subsystems can natively co-exist on a single host
     by creating a separate user account for each LX subsystem.
     
-    These functions provide a standard framework which these accounts are created to provide easier access
+    These functions provide a standard framework which user accounts can be created to provide easier access
     to these separate LX subsystem by using what is built into Windows.
     
 # Getting started
