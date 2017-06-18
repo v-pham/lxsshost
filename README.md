@@ -1,11 +1,11 @@
 # lxsshost
-    Configures a Windows local host to allow multiple LX subsystems to be more easily accessible by a 
-    single user.
+    Configures a Windows local host to allow multiple LX subsystems to be more easily accessible by a single 
+    user.
     
 ## Description
     This enables multiple LX subsystems (LXSS) to be more easily accessible by a single user. Each user 
-    account can host a unique LX subsystem. Multiple LX subsystems can natively co-exist on a single host
-    by creating a separate user account for each LX subsystem.
+    account can host a unique LX subsystem. Multiple LX subsystems can natively co-exist on a single host by 
+    creating a separate user account for each LX subsystem.
     
     These functions provide a standard framework which user accounts can be created to provide easier access
     to these separate LX subsystem by using what is built into Windows.
@@ -21,6 +21,7 @@ Import-Module C:\path\to\master.ps1 -Global
 ```powershell
 Initialize-LXSSHost -Verbose
 ```
+#### NOTE:
     This is not required to use the New-LXSubsystem function but future code may be written assuming this
     has been ran and there does exist some group by which to filter LXSS user accounts.
     
@@ -41,9 +42,9 @@ New-LXSubsystem
     drive entirely.
     
 ##### WARNING: 
-    Because it made it easier for me, I automatically also add every LXSS user
-    to the Administrators group. Might be a security concern for some, but all my testing
-    has always had the LXSS accounts users in this group.
+    Because it made it easier for me, I automatically also add every LXSS user to the Administrators group. 
+    Might be a security concern for some, but all my testing has always had the LXSS accounts users in this 
+    group.
     
 ## Accessing another LX subsystem
     The following function invokes bash.exe under the context of the user account specified in -Name.
@@ -60,10 +61,10 @@ Start-LXSubsystemCommand
 ```
    
 ## Caveats
-    The host setup involves creating json files that I hope to eventually take as the 
-    default input values for subsequent functions. I hope to create a separate default user profile to be used for
-    the LXSS user accounts. I was thinking maybe to use a shared user profile directory with a separately defined 
-    location only the user AppData folder where the LX subsystem exists.
+    The host setup involves creating json files that I hope to eventually take as the default input values 
+    for subsequent functions. I hope to create a separate default user profile to be used for the LXSS user 
+    accounts. I was thinking maybe to use a shared user profile directory with a separately defined location 
+    only the user AppData folder where the LX subsystem exists.
     
     Anyway, please enjoy and please feel free to share, contribute, or report bugs found.
     
