@@ -68,9 +68,9 @@ Start-LXSubsystemCommand -Name ubuntu
   Please enjoy and feel free to share, contribute, or report bugs found.
     
 ## Author
-  Victor Pham
-  victorvpham@gmail.com
-  Last updated 2017-06-18
+    Victor Pham
+    (victorvpham@gmail.com)
+    Last updated 2017-06-18
     
 #### Version:
     0.0.1.0 - Created.
