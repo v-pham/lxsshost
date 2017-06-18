@@ -22,7 +22,7 @@ Import-Module C:\path\to\master.ps1 -Global
 Initialize-LXSSHost -Verbose
 ```
     NOTE: This is not required to use the New-LXSubsystem function but future code may be written assuming 
-    this has been ran and there does exist some group by which to filter LXSS user accounts.
+    this has been ran.
     
 ## Creating a new LX subsystem
     Run the following function to create a new LX subsystem:
@@ -42,8 +42,8 @@ New-LXSubsystem -Name ubuntu -LXSSRoot "C:\.lxss" -Password "Change2day!" -AsPla
     + The user account is set to be hidden from the Windows logon screen
     
 ##### Warning
-    I also add every LXSS user to the Administrators group. Might be a security concern for some, but 
-    all my testing has always had the LXSS accounts users in this group.
+    I also add every LXSS user to the Administrators group. Might be a security concern for some but 
+    all my testing has always had the LXSS created accounts users in this group.
     
 ## Accessing created LX subsystems
     The following function invokes bash.exe under the context of the user account specified in -Name. The 
@@ -53,8 +53,8 @@ New-LXSubsystem -Name ubuntu -LXSSRoot "C:\.lxss" -Password "Change2day!" -AsPla
 Enter-BashSession -Name ubuntu
 ```
 
-## Managing/modifying the LX subsystems from Windows
-    In certain circumstances, it might be required to manage the LX subsystem from a Windows prompt. Running
+## Interacting LX subsystems from Windows
+    If needed, the following starts a Windows prompt in the context of the LXSS user account. Running
     the following opens a Window command prompt as the LXSS user account:
 ```powershell
 Start-LXSubsystemCommand -Name ubuntu
