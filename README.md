@@ -16,7 +16,7 @@
 Import-Module C:\path\to\master.ps1 -Global
 ```
     
-##### (Optional)
+##### (Optional) Setup the local host
     Run the following function to create the local group and create the configuration files:
 ```powershell
 Initialize-LXSSHost -Verbose
@@ -27,27 +27,28 @@ Initialize-LXSSHost -Verbose
 ## Creating a new LX subsystem
     Run the following function to create a new LX subsystem:
 ```powershell
-New-LXSubsystem -Name ubuntu -Tag lxss- -TagType Prefix -LXSSRoot "C:\.lxss" -Password "Ishouldchangethis2day" -AsPlainText -SetLXSSPassword
+New-LXSubsystem -Name ubuntu -LXSSRoot "C:\.lxss" -Password "Change2day!" -AsPlainText -SetLXSSPassword
 ```
+##### Note
+    This is not required to use the New-LXSubsystem function but future code may be written assuming 
+    this has been ran and there does exist some group by which to filter LXSS user accounts.
     
 ## Details on what this is doing:
     
-    Each local LXSS user account is created with the same password and standardize naming convention. Using 
-    the same password and standardized account name syntax, credentials are then stored and passed within 
-    subsequent functions to run the bash.exe as a separate user.
+    + A user account is created, -SetLXSSPassword exports the credentials to a text file (converted from 
+    a secure string).
+    + Invokes a quick call to start Windows command prompt (and exit) to create the user profile in the
+    directory specified within -LXSSRoot.
+    + The user account is set to be hidden from the Windows logon screen
     
-    It also hides each account from the Windows logon screen and enables the ability to re-direct the the 
-    LXSS account profiles. I can confirm I am currently redirecting these account profiles to a separate 
-    drive entirely.
-    
-##### WARNING: 
-    Because it made it easier for me, I also added every LXSS user to the Administrators group. Might be a 
-    security concern for some, but all my testing has always had the LXSS accounts users in this group.
+##### Warning
+    I also add every LXSS user to the Administrators group. Might be a security concern for some, but 
+    all my testing has always had the LXSS accounts users in this group.
     
 ## Accessing created LX subsystems
-    The following function invokes bash.exe under the context of the user account specified in -Name.
-    Just to be fancy, the -Name parameter options is defined at runtime and will update (listing members of 
-    the "Linux Subsystems", if it exists).
+    The following function invokes bash.exe under the context of the user account specified in -Name. The 
+    -Name parameter options is defined at runtime and will update (listing members of the "Linux Subsystems", 
+    if it exists).
 ```powershell
 Enter-BashSession -Name ubuntu
 ```
