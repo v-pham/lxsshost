@@ -4,8 +4,11 @@
     
 # Desciption
     This enables multiple LX subsystems (LXSS) to be more easily accessible by a single user. Each user 
-    account can host a unique LX subsystem. Multiple LX subsystems can already exist by creating separate 
-    local user account for each LX subsystem.
+    account can host a unique LX subsystem. Multiple LX subsystems can natively co-exist on a single host
+    by creating a separate user account for each LX subsystem.
+    
+    These functions provide a standard framework which these accounts are created to provide easier access
+    to these separate LX subsystem by using what is built into Windows.
     
 # Getting started
     Download master.ps1 and run the following in an elevated PowerShell console:
@@ -27,15 +30,25 @@ Details on what this is doing:
     
     It also hides each account from the Windows logon screen and enables the ability to re-direct the
     the LXSS account profiles. I can confirm I am currently redirecting these account profiles
-    to a separate drive.
+    to a separate drive entirely.
     
   ! WARNING: Because it made it easier for me, I automatically also add every LXSS user
     to the Administrators group. Might be a security concern for some, but all my testing
-    has always had the LXSS accounts users in this group. 
+    has always had the LXSS accounts users in this group.
+    
+# Accessing another LX subsystem
+    The following function invokes bash.exe under the context of the user account specified in -Name.
+    Just to be fancy, the -Name parameter options is defined at runtime and will update, based on account 
+    membership of Linux Subsystems group.
+        Enter-BashSession
+        
+    If need-be, the following function will open up Windows cmd prompt as the LX subsystem account:
+        Start-LXSubsystemCommand
    
 # Caveats
     The host setup involves creating json files that I hope to eventually take as the 
-    default input values for subsequent functions.
+    default input values for subsequent functions. I hope to slim down a user profile could be used 
+    as the default user profile template just the LXSS accounts.
     
 # Author
     Victor Pham, victorvpham@gmail.com
