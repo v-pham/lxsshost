@@ -38,7 +38,7 @@ Details on what this is doing:
     default input values for subsequent functions.
     
 # Author
-    Authored by Victor Pham, victorvpham@gmail.com
+    Victor Pham, victorvpham@gmail.com
     Last updated 2017-06-18
     
 # Version:
