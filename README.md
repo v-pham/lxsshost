@@ -1,4 +1,4 @@
-# lxsshost
+# LX Subsystems Host (Windows Subsystem for Linux) Framework
   Configures a Windows local host to allow multiple LX subsystems to be more easily accessible by a single 
   user.
     
