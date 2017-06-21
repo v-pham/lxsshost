@@ -4,11 +4,11 @@
     
 ## Description
   This enables multiple LX subsystems (LXSS) to be more easily accessible by a single user. Each user account 
-  can host a single LX subsystem. Multiple LX subsystems can natively co-exist on a single Windows host by 
-  creating a separate user account for each LX subsystem.
+  can host a single LX subsystem. So multiple LX subsystems can natively co-exist on a single Windows host by 
+  creating a separate user accounts for each LX subsystem.
     
-  These functions aim to provide a standard framework which local user accounts can be created to provide 
-  easier access to separate LX subsystems by using what is already available in Windows.
+  These PowerShell functions aim to provide a standard framework which local user accounts can be created 
+  to simplify accessing and managing separate LX subsystems by using what is already available in Windows.
     
 ## Getting started
   Download master.ps1 and import the script by running the following in an elevated PowerShell console:
@@ -36,15 +36,15 @@ New-LXSubsystem -Name ubuntu -LXSSRoot "C:\.lxss" -Password "Change2day!" -AsPla
     
 ### Details on what this is doing:
     
-    - A user account is created, -SetLXSSPassword exports the credentials to a text file (converted from a secure 
-    string).
-    - Invokes Windows command prompt to create the user profile in the directory specified by LXSSRoot.
-      * This can allow you to redirect the LX subsystem to a drive other than the system drive.
-    - The user account is set to be hidden from the Windows logon screen
+    - User account "ubuntu" is created with password "Change2day!"
+      * -SetLXSSPassword exports the credentials to a text file (converted from a secure string).
+    - Windows command prompt invoked to create the user profile in the directory specified by -LXSSRoot.
+      * This enables the ability to redirect the user profile (and LX subsystem) to a drive other than C:\.
+    - User account is set to be hidden from the Windows logon screen
     
 ##### Warning
     By default, every LXSS user account created is added to both a custom created LX Subsystems group and the 
-    built in Administrators group. This may be a security concern for some so do so at your own risk but all 
+    built-in Administrators group. This may be a security concern for some so do so at your own risk but all 
     my testing has always had the LXSS user accounts created members of these two groups.
     
 ## Accessing the LX subsystems
@@ -73,7 +73,8 @@ Start-LXSubsystemCommand -Name ubuntu
   subsystem enabling the ability to run concurrent LX subsystems that are able to interact with one another.
   
   I am not sure of the value in doing this because the local host would be like acting as a "pseudo-hypervisor" 
-  for LX subsystems. At that point, most would prefer to run a true hypervisor run true linux virtual machines.
+  for LX subsystems. At that point, most would prefer to run a true hypervisor and host true linux virtual 
+  machines.
     
   Please enjoy and feel free to share, contribute, or report bugs found.
     
